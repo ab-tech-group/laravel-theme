@@ -40,7 +40,7 @@ class Breadcrumb {
         // Template for breadcrumb.
         $this->template = '
             <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                @foreach ($crumbs as $i => $crumb)
+                <?php foreach ($crumbs as $i => $crumb){ ?>
                 @if ($i != (count($crumbs) - 1))
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<meta itemprop="position" content="{{ $i + 1}}" />
@@ -53,7 +53,7 @@ class Breadcrumb {
                 @else
                 <li class="active">{!! $crumb["label"] !!}</li>
                 @endif
-                @endforeach
+                <?php }?>
             </ul>
         ';
     }

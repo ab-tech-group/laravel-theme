@@ -406,6 +406,9 @@ class Theme implements ThemeContract
         // Add location to look up view.
         $this->addPathLocation($this->path());
 
+        $this->view->addLocation(public_path(config('theme.themeDir').'/'.$this->theme.'/views'));
+        $this->view->replaceNamespace('public', public_path(config('theme.themeDir').'/'.$this->theme.'/views'));
+
         // Fire event before set up a theme.
         $this->fire('before', $this);
 
