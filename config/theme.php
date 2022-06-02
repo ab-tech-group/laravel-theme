@@ -1,6 +1,6 @@
 <?php
 
-$serializer = new SuperClosure\Serializer;
+use function Opis\Closure\{serialize as s, unserialize as u};
 
 return array(
 
@@ -95,13 +95,13 @@ return array(
 	'events' => array(
 
 		// Before all event, this event will effect for global.
-		'before' => $serializer->serialize(function($theme)
+		'before' => s(function($theme)
 		{
 			//$theme->setTitle('Something in global.');
 		}),
 
 		// This event will fire as a global you can add any assets you want here.
-		'asset' => $serializer->serialize(function($asset)
+		'asset' => s(function($asset)
 		{
 			// Preparing asset you need to serve after.
             $asset->cook('backbone', function($asset)
@@ -150,7 +150,7 @@ return array(
 
 		    // This is laravel alias to allow in twig compiler
 		    // The list all of methods is at /app/config/app.php
-		    'hooks' => $serializer->serialize(function($twig)
+		    'hooks' => s(function($twig)
 		    {
 		        // Example add funciton name "demo".
 		        /*$function = new Twig_SimpleFunction('example', function()
